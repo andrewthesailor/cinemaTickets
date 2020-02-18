@@ -3,6 +3,7 @@ package com.andrewthesailor.cinemaTickets.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import net.minidev.json.annotate.JsonIgnore;
 
 import javax.persistence.*;
 
@@ -16,6 +17,7 @@ public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "S_ROOM_ID")
     @Column(name = "ROOM_ID")
+    @JsonIgnore
     private Long id;
 
     @Column(name = "ROOM_NUMBER")

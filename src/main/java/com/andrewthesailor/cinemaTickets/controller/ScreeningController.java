@@ -1,12 +1,39 @@
 package com.andrewthesailor.cinemaTickets.controller;
 
 
-import org.springframework.stereotype.Controller;
+import com.andrewthesailor.cinemaTickets.model.Jsons.ScreeningDetails;
+import com.andrewthesailor.cinemaTickets.model.Jsons.ScreeningSearchData;
+import com.andrewthesailor.cinemaTickets.model.Screening;
+import com.andrewthesailor.cinemaTickets.service.ScreeningService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+import javax.validation.Valid;
+import java.util.List;
+
+@RestController
+@RequestMapping("/screening")
 public class ScreeningController {
 
+    @Autowired
+    ScreeningService screeningService;
 
+    @GetMapping(value = "/getScreenings", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Screening>>getScreenings(@Valid @RequestBody ScreeningSearchData data){
+        return new ResponseEntity<List<Screening>>(screeningService.getScreenings(data.getStartDate(),data.getEndDate()), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/getDetails/{screeningId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<ScreeningDetails>getScreeningDetails(@PathVariable(value = "screeningId", required = true) Long screeningId){
+        Screening screening = screeningService.getScreening(screeningId);
+        ScreeningDetails details= new ScreeningDetails();
+        details.setRoomNumber(screening.getRoom().getName());
+        screeningService.getFreeSeats(screeningId);
+        return new ResponseEntity<ScreeningDetails>(, HttpStatus.OK);
+    }
 
 
 
