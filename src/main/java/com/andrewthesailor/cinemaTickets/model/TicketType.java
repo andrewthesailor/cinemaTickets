@@ -13,22 +13,15 @@ public class TicketType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "S_TICKET_TYPE_ID")
-    @Column(name = "TICKET_ID")
+    @Column(name = "TICKET_TYPE_ID")
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "TICKET_RESERVATION_ID")
-    private Reservation reservation;
+    @Column(name = "TICKET_TYPE_CODE")
+    private String code;
 
-    @ManyToOne
-    @JoinColumn(name = "TICKET_SCREENING_ID")
-    private Screening screening;
+    @Column(name = "TICKET_TYPE_NAME")
+    private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "TICKET_SEAT_ID")
-    private Seat seat;
-
-    @ManyToOne
-    @JoinColumn(name = "TICKET_TICKET_TYPE_ID")
-    private TicketType ticketType;
+    @Column(name = "TICKET_TYPE_PRICE")
+    private Double price;
 }

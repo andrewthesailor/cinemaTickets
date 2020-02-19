@@ -1,5 +1,6 @@
 package com.andrewthesailor.cinemaTickets.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,6 +11,7 @@ import javax.persistence.*;
 @Setter
 @Table(name = "T_SEATS")
 @SequenceGenerator(name = "S_SEAT_ID", sequenceName = "S_SEAT_ID", allocationSize = 50)
+@JsonIgnoreProperties({"room"})
 public class Seat {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "S_SEAT_ID")

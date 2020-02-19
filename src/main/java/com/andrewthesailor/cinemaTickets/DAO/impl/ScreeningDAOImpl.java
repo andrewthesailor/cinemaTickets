@@ -5,6 +5,7 @@ import com.andrewthesailor.cinemaTickets.model.Screening;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.util.Date;
@@ -25,8 +26,10 @@ public class ScreeningDAOImpl implements ScreeningDAO {
     }
 
     @Override
-    public Screening getScreening(Long id) {
-        return null;
+    public Screening getScreening(Long id) throws NoResultException {
+        String query = "SELECT data FROM Screening data WHERE data.id = :id";
+        TypedQuery<Screening> resultQuery = entityManager.createQuery(query, Screening.class).setParameter("id", id);
+        return resultQuery.getSingleResult();
     }
 }
 
