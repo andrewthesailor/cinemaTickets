@@ -119,8 +119,9 @@ public class ReservationServiceImpl implements ReservationService {
                 wrongSeats.add(id);
             }
         }
-        if (!wrongSeats.isEmpty())
+        if (!wrongSeats.isEmpty()){
             throw new TicketException("Seats with id:" + wrongSeats + " are unavailable");
+        }
     }
 
     private Double storeReservation(ReservationRequestData data, Screening screening) {
