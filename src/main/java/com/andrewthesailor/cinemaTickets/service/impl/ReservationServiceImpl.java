@@ -8,6 +8,7 @@ import com.andrewthesailor.cinemaTickets.model.Jsons.TicketData;
 import com.andrewthesailor.cinemaTickets.model.*;
 import com.andrewthesailor.cinemaTickets.service.*;
 import com.andrewthesailor.cinemaTickets.utils.StringUtil;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.NoResultException;
@@ -18,6 +19,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Service
+@AllArgsConstructor
 public class ReservationServiceImpl implements ReservationService {
 
     final
@@ -37,15 +39,6 @@ public class ReservationServiceImpl implements ReservationService {
 
     final
     StringUtil stringUtil;
-
-    public ReservationServiceImpl(ScreeningService screeningService, SeatService seatService, TicketTypeService ticketTypeService, ReservationDAO reservationDAO, TicketService ticketService, StringUtil stringUtil) {
-        this.screeningService = screeningService;
-        this.seatService = seatService;
-        this.ticketTypeService = ticketTypeService;
-        this.reservationDAO = reservationDAO;
-        this.ticketService = ticketService;
-        this.stringUtil = stringUtil;
-    }
 
     @Override
     @Transactional

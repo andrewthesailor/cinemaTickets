@@ -21,7 +21,7 @@ public class ScreeningDAOImpl implements ScreeningDAO {
     @Override
     public List<Screening> getScreenings(Date startDate, Date endDate) {
         String query = "SELECT data FROM Screening data WHERE data.startDate>:startDate and data.startDate> :endDate";
-        TypedQuery<Screening> resultQuery = entityManager.createQuery(query, Screening.class).setParameter("startDate", startDate).setParameter("endDate",endDate);
+        TypedQuery<Screening> resultQuery = entityManager.createQuery(query, Screening.class).setParameter("startDate", startDate).setParameter("endDate", endDate);
         return resultQuery.getResultList();
     }
 

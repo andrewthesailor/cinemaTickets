@@ -6,6 +6,7 @@ import com.andrewthesailor.cinemaTickets.model.Jsons.ScreeningSearchData;
 import com.andrewthesailor.cinemaTickets.model.Screening;
 import com.andrewthesailor.cinemaTickets.service.ScreeningService;
 import com.andrewthesailor.cinemaTickets.service.SeatService;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/screening")
+@AllArgsConstructor
 public class ScreeningController {
 
     final
@@ -23,11 +25,6 @@ public class ScreeningController {
 
     final
     SeatService seatService;
-
-    public ScreeningController(ScreeningService screeningService, SeatService seatService) {
-        this.screeningService = screeningService;
-        this.seatService = seatService;
-    }
 
     @GetMapping(value = "/getScreenings", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Screening>> getScreenings(@Valid @RequestBody ScreeningSearchData data) {

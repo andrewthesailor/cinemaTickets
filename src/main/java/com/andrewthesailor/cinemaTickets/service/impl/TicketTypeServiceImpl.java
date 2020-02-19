@@ -4,6 +4,7 @@ import com.andrewthesailor.cinemaTickets.DAO.TicketTypeDAO;
 import com.andrewthesailor.cinemaTickets.exception.TicketException;
 import com.andrewthesailor.cinemaTickets.model.TicketType;
 import com.andrewthesailor.cinemaTickets.service.TicketTypeService;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.NoResultException;
@@ -11,14 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class TicketTypeServiceImpl implements TicketTypeService {
 
     final
     TicketTypeDAO ticketTypeDAO;
-
-    public TicketTypeServiceImpl(TicketTypeDAO ticketTypeDAO) {
-        this.ticketTypeDAO = ticketTypeDAO;
-    }
 
     @Override
     public TicketType getByCode(String code) throws NoResultException {

@@ -13,7 +13,6 @@ public class TicketDAOImpl implements TicketDAO {
     @PersistenceContext
     EntityManager entityManager;
 
-
     @Override
     public Ticket persist(Ticket ticket) {
         entityManager.persist(ticket);

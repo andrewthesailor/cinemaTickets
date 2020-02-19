@@ -12,7 +12,7 @@ import java.util.Date;
 @Setter
 @Table(name = "T_SCREENINGS")
 @SequenceGenerator(name = "S_SCREENING_ID", sequenceName = "S_SCREENING_ID", allocationSize = 50)
-@JsonIgnoreProperties({"room","reservations"})
+@JsonIgnoreProperties({"room", "reservations"})
 public class Screening {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "S_SCREENING_ID")

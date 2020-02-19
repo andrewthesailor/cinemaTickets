@@ -4,19 +4,17 @@ import com.andrewthesailor.cinemaTickets.DAO.SeatDAO;
 import com.andrewthesailor.cinemaTickets.model.Screening;
 import com.andrewthesailor.cinemaTickets.model.Seat;
 import com.andrewthesailor.cinemaTickets.service.SeatService;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class SeatServiceImpl implements SeatService {
 
     final
     SeatDAO seatDAO;
-
-    public SeatServiceImpl(SeatDAO seatDAO) {
-        this.seatDAO = seatDAO;
-    }
 
     @Override
     public List<Seat> getFreeSeats(Screening screening) {

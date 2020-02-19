@@ -30,6 +30,4 @@ public class Ticket {
     @JoinColumn(name = "TICKET_TICKET_TYPE_ID")
     private TicketType ticketType;
 
-
-
 }

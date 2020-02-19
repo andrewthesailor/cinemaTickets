@@ -10,6 +10,4 @@ public interface ScreeningDAO {
     public List<Screening> getScreenings(Date startDate, Date endDate);
 
     public Screening getScreening(Long id);
-
-
 }

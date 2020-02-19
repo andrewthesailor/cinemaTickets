@@ -1,4 +1,5 @@
 package com.andrewthesailor.cinemaTickets.model;
+
 import lombok.Getter;
 import lombok.Setter;
 

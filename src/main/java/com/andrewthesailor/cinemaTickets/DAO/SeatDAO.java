@@ -12,5 +12,5 @@ public interface SeatDAO {
 
     List<Seat> getSeats(List<Long> ids);
 
-    public List<Seat> getReservedSeats(Screening screening);
+    List<Seat> getReservedSeats(Screening screening);
 }

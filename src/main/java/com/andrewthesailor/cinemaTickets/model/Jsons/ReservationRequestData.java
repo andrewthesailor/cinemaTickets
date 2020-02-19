@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class ReservationRequestData {
-private String name;
-private String surname;
-private TicketList ticketList;
+    private String name;
+    private String surname;
+    private TicketList ticketList;
 }

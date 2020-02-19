@@ -20,14 +20,14 @@ public class SeatDAOImpl implements SeatDAO {
     public List<Seat> getFreeSeats(Screening screening) {
         String query = "SELECT data FROM Seat data where data.room = :room and data not in " +
                 "(SELECT data1 FROM Seat data1 join Ticket t on t.seat = data1 where t.reservation.screening = :screening)";
-        TypedQuery<Seat> typedQuery = entityManager.createQuery(query, Seat.class).setParameter("room", screening.getRoom()).setParameter("screening",screening);
+        TypedQuery<Seat> typedQuery = entityManager.createQuery(query, Seat.class).setParameter("room", screening.getRoom()).setParameter("screening", screening);
         return typedQuery.getResultList();
     }
 
     @Override
     public List<Seat> getReservedSeats(Screening screening) {
         String query = "SELECT data FROM Seat data join Ticket t on t.seat = data where t.reservation.screening = :screening";
-        TypedQuery<Seat> typedQuery = entityManager.createQuery(query, Seat.class).setParameter("screening",screening);
+        TypedQuery<Seat> typedQuery = entityManager.createQuery(query, Seat.class).setParameter("screening", screening);
         return typedQuery.getResultList();
     }
 
