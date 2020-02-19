@@ -20,60 +20,74 @@ Running application
 
     -run program by running java -jar
 
-    -to change default settings change them in customproperties.properties file and run application --spring.config.location={path to customproperties}
+    -to change default settings change them in application.properties file and run application --spring.config.location={path to outside properties}
 
 Using Application
 
     -getting screening for given time using curl
 
-    curl --location --request GET &#39;localhost:8086/screening/getScreenings&#39; \
+    curl --location --request GET localhost:8086/screening/getScreenings \
 
-        --header &#39;Content-Type: application/json&#39; \
+        --header Content-Type: application/json \
 
-        --data-raw &#39;{
+        --data-raw {
 
-         &quot;startDate&quot; : &quot;2020-02-17T12:00:00Z&quot;,
+         startDate : 2020-02-17T12:00:00Z,
 
-         &quot;endDate&quot; : &quot;2020-02-21T12:00:00Z&quot;
+         endDate : 2020-02-21T12:00:00Z
 
-        }&#39;
+        }
 
     -getting screening details
 
-    curl --location --request GET &#39;localhost:8086/screening/getDetails/1&#39; \
+    curl --location --request GET localhost:8086/screening/getDetails/1 \
 
-                    --header &#39;Content-Type: application/json&#39;
+                    --header Content-Type: application/json
 
                 -ticket reservation
 
-curl --location --request POST &#39;localhost:8086/reservation/reserve/1&#39; \
+curl --location --request POST localhost:8086/reservation/reserve/1 \
 
-            --header &#39;Content-Type: application/json&#39; \
+            --header Content-Type: application/json \
 
-            --data-raw &#39;{
+            --data-raw {
 
-                    &quot;name&quot;:&quot;Andrzej&quot;,
+                    name:Andrzej,
 
-                    &quot;surname&quot;:&quot;Szczepanik&quot;,
+                    surname:Szczepanik,
 
-                    &quot;ticketList&quot;:[
+                    ticketList:[
 
                             {
 
-                                    &quot;seatId&quot;:201,
+                                    seatId:201,
 
-                                    &quot;ticketTypeCode&quot;:&quot;S&quot;
+                                    ticketTypeCode:S
 
                             },
 
                 {
 
-               &quot;seatId&quot;:101,
+               seatId:151,
 
-               &quot;ticketTypeCode&quot;:&quot;C&quot;
+               ticketTypeCode:C
 
               }
 
              ]
 
-            }&#39;
+            }
+
+        -example of not registering request
+        curl --location --request POST 'localhost:8086/reservation/reserve/1' \
+        --header 'Content-Type: application/json' \
+        --data-raw '{
+        	"name":"Grażyna",
+        	"surname":"Pierwsza-Druga-Trzecia",
+        	"ticketList":[
+        		{
+        			"seatId":1,
+        			"ticketTypeCode":"S"
+        		}
+        	]
+        }'
