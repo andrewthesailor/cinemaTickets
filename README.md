@@ -77,7 +77,6 @@ curl --location --request POST localhost:8086/reservation/reserve/1 \
              ]
 
             }
-
         -example of not registering request
         curl --location --request POST 'localhost:8086/reservation/reserve/1' \
         --header 'Content-Type: application/json' \
@@ -91,3 +90,4 @@ curl --location --request POST localhost:8086/reservation/reserve/1 \
         		}
         	]
         }'
+
